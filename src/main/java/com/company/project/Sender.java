@@ -20,6 +20,6 @@ public class Sender {
         m.setId(System.currentTimeMillis());
         m.setMsg(UUID.randomUUID().toString());
         m.setSendTime(new Date());
-        kafkaTemplate.send("test-test", JSON.toJSONString(m));
+        kafkaTemplate.send("test", JSON.toJSONString(m));
     }
 }

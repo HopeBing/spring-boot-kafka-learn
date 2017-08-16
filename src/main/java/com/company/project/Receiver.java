@@ -8,7 +8,7 @@ import com.company.project.model.Message;
 
 @Component
 public class Receiver {
-	@KafkaListener(topics = "test-test")
+	@KafkaListener(topics = "test")
     public void processMessage(String content) {
         Message m = JSON.parseObject(content, Message.class);
     }
