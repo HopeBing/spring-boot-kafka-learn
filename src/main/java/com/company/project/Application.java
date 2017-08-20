@@ -9,11 +9,11 @@ import org.springframework.context.ApplicationContext;
 public class Application {
     public static void main(String[] args) throws InterruptedException {
     	ApplicationContext app = SpringApplication.run(Application.class, args);
-        while(true){
-            Sender sender = app.getBean(Sender.class);
-            sender.sendMessage();
-            Thread.sleep(500);
-        }
+//        while(true){
+//            Sender sender = app.getBean(Sender.class);
+//            sender.sendMessage();
+//            Thread.sleep(500);
+//        }
     }
 }
 

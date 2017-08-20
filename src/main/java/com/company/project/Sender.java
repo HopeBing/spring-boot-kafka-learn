@@ -22,4 +22,13 @@ public class Sender {
         m.setSendTime(new Date());
         kafkaTemplate.send("test", JSON.toJSONString(m));
     }
+    
+    public void sendMessage(String message){
+    	System.out.println("kafkaTemplate-sendMessage");
+        Message m = new Message();
+        m.setId(System.currentTimeMillis());
+        m.setMsg(message);
+        m.setSendTime(new Date());
+        kafkaTemplate.send("test", JSON.toJSONString(m));
+    }
 }
