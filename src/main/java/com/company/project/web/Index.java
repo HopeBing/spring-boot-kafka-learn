@@ -6,9 +6,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Map;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItemIterator;
@@ -26,16 +31,17 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.company.project.Sender;
 import com.company.project.SpringUtils;
+import com.company.project.util.DESUtil;
 
 @Controller
 public class Index {
 
-	@RequestMapping("/hello")
+	@RequestMapping("/index")
 	public String home(Map<String,Object> map){
-		System.out.println("hello");
+		System.out.println("index");
 		
-	   map.put("hello","Hello World!");  
-	   return"hello";  
+	   //map.put("hello","Hello World!");  
+	   return "index";  
 	}
 	
 	@RequestMapping("/upload") 
@@ -59,6 +65,8 @@ public class Index {
 
             // Parse the request
             FileItemIterator iter = upload.getItemIterator(request);
+            
+            //DESUtil des = new DESUtil("test");
             System.out.println(iter.hasNext());
             while (iter.hasNext()) {
             	System.out.println(iter.hasNext());
@@ -73,6 +81,28 @@ public class Index {
                 	 while ((bin.read(buf)) != -1)
                 	 {
                 		 System.out.println(buf);
+                		/*
+                		 //加密
+                		try {
+							System.out.println(des.encrypt(buf));
+						} catch (InvalidKeyException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IllegalBlockSizeException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (BadPaddingException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (NoSuchAlgorithmException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (NoSuchPaddingException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                		 */
+                		 
                 		 //Sender sender = SpringUtils.getApplicationContext().getBean(Sender.class);
                          //sender.sendMessage(new String(buf));
                 	 }
